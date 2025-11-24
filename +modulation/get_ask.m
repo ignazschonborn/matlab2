@@ -12,10 +12,16 @@ function [X,label] = get_ask(M)
 %   label:  Matrix of size Mxm containing the binary labels of the M ASK
 %           symbols where m=log2(M)
 
+%M=2
+
+m=log2(M)
 
 X = zeros(1,M);
 label = zeros(M,log2(M));
 
+X = (-M+1:2:M-1);
+label = modulation.get_gray_label(m)
+X = X/sqrt(mean(abs(X).^2))
 
 end
 
